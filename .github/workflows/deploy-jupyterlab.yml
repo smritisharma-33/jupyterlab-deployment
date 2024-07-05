@@ -1,1 +1,30 @@
+name: Deploy JupyterLab to Azure
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Azure CLI login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Create resource group
+      run: |
+        az group create --name sss19 --location eastus
+
+    - name: Deploy JupyterLab
+      run: |
+        az deployment group create \
+          --resource-group myResourceGroup \
+          --template-file ./infrastructure/template.json \
+          --parameters ./infrastructure/parameters.json
