@@ -25,6 +25,6 @@ jobs:
     - name: Deploy JupyterLab
       run: |
         az deployment group create \
-          --resource-group myResourceGroup \
+          --resource-group sss19 \
           --template-file ./infrastructure/template.json \
           --parameters ./infrastructure/parameters.json
