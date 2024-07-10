@@ -20,11 +20,11 @@ jobs:
 
     - name: Create resource group
       run: |
-        az group create --name sss19 --location eastus
+        az group create --name myResourceGroup --location eastus
 
     - name: Deploy JupyterLab
       run: |
         az deployment group create \
-          --resource-group sss19 \
+          --resource-group myResourceGroup \
           --template-file ./infrastructure/template.json \
           --parameters ./infrastructure/parameters.json
