@@ -22,8 +22,8 @@ jobs:
       with:
         subscriptionId: '6d609205-8d5f-419e-82ee-cba433b6b06a'
         resourceGroupName: 'sss19'
-        template: './template.json'
-        parameters: './parameters.json'
+        template: './infrastructure/template.json'
+        parameters: './infrastructure/parameters.json'
         failOnStdErr: false
 
     - name: Notify Deployment Success
